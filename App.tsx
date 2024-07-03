@@ -14,8 +14,8 @@ export default function App() {
         <LittleLemonHeader />
         {/*<WelcomeScreen />*/}
         {/*<MenuItems />*/}
-        {/*<FeedbackForm/>*/}
-        <LoginScreen />
+        <FeedbackForm/>
+        {/*<LoginScreen />*/}
       </View>
       <View>
         <LittleLemonFooter />

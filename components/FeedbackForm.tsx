@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ScrollView, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
+import { Button, ScrollView, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert } from "react-native";
 
 export const FeedbackForm = () => {
     const [firstName, onChangeFirstName] = useState(''); 
@@ -24,13 +24,17 @@ export const FeedbackForm = () => {
                     style={feedbackStyles.input} 
                     value={firstName} 
                     onChangeText={onChangeFirstName}
-                    placeholder="First Name" 
+                    placeholder="First Name"
+                    onFocus={() => Alert.alert('first name is focused')} 
+                    onBlur={() => Alert.alert('first name is blurred')}
+                    clearButtonMode="always"
                 /> 
                 <TextInput 
                     style={feedbackStyles.input} 
                     value={lastName} 
                     onChangeText={onChangeLastName}
                     placeholder="Last Name" 
+                    clearButtonMode="always"
                 /> 
                 <TextInput 
                     style={feedbackStyles.input} 
@@ -38,14 +42,16 @@ export const FeedbackForm = () => {
                     onChangeText={onChangePhoneNumber} 
                     keyboardType="phone-pad"
                     placeholder="Phone Number"
+                    clearButtonMode="always"
                 />
                 <TextInput 
                     style={feedbackStyles.messageInput} 
                     value={message} 
                     onChangeText={onChangeMessage}
                     placeholder={'Please leave feedback'} 
-                    multiline={true} 
+                    multiline={false} 
                     maxLength={250} 
+                    clearButtonMode="always"
                 /> 
                 <Button
                     title="Submit"
