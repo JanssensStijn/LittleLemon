@@ -5,6 +5,7 @@ export const WelcomeScreen = () => {
     const [firstName, onChangeFirstName] = useState('');
     return (
         <ScrollView
+            keyboardDismissMode="on-drag"
             indicatorStyle="white"
             style={welcomeStyles.container}>
                 <Text
