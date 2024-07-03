@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ScrollView, Text, TextInput, StyleSheet } from "react-native";
+import { Button, ScrollView, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 
 export const FeedbackForm = () => {
     const [firstName, onChangeFirstName] = useState(''); 
@@ -7,37 +7,40 @@ export const FeedbackForm = () => {
     const [message, onChangeMessage] = useState(''); 
 
     return (
-        <ScrollView style={feedbackStyles.container}
-            keyboardDismissMode="on-drag"> 
-            <Text style={feedbackStyles.headingSection}> 
-                How was your visit to Little Lemon? 
-            </Text> 
-            <Text style={feedbackStyles.infoSection}> 
-                Little Lemon is a charming neighborhood bistro that serves simple food 
-                and classic cocktails in a lively but casual environment. We would love 
-                to hear your experience with us! 
-            </Text>
-            <TextInput 
-                style={feedbackStyles.input} 
-                value={firstName} 
-                onChangeText={onChangeFirstName} 
-            /> 
-            <TextInput 
-                style={feedbackStyles.input} 
-                value={lastName} 
-                onChangeText={onChangeLastName} 
-            /> 
-            <TextInput 
-                style={feedbackStyles.messageInput} 
-                value={message} 
-                onChangeText={onChangeMessage}
-                multiline={true} 
-            /> 
-            <Button
-                title="Submit"
-                onPress={() => alert('Feedback submitted!')}
-            />
-        </ScrollView>
+        <KeyboardAvoidingView
+            style={feedbackStyles.container}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}>
+            <ScrollView keyboardDismissMode="on-drag"> 
+                <Text style={feedbackStyles.headingSection}> 
+                    How was your visit to Little Lemon? 
+                </Text> 
+                <Text style={feedbackStyles.infoSection}> 
+                    Little Lemon is a charming neighborhood bistro that serves simple food 
+                    and classic cocktails in a lively but casual environment. We would love 
+                    to hear your experience with us! 
+                </Text>
+                <TextInput 
+                    style={feedbackStyles.input} 
+                    value={firstName} 
+                    onChangeText={onChangeFirstName} 
+                /> 
+                <TextInput 
+                    style={feedbackStyles.input} 
+                    value={lastName} 
+                    onChangeText={onChangeLastName} 
+                /> 
+                <TextInput 
+                    style={feedbackStyles.messageInput} 
+                    value={message} 
+                    onChangeText={onChangeMessage}
+                    multiline={true} 
+                /> 
+                <Button
+                    title="Submit"
+                    onPress={() => alert('Feedback submitted!')}
+                />
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
 
