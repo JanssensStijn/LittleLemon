@@ -4,7 +4,8 @@ import { Button, ScrollView, Text, TextInput, StyleSheet, KeyboardAvoidingView, 
 export const FeedbackForm = () => {
     const [firstName, onChangeFirstName] = useState(''); 
     const [lastName, onChangeLastName] = useState(''); 
-    const [message, onChangeMessage] = useState(''); 
+    const [message, onChangeMessage] = useState('');
+    const [phoneNumber, onChangePhoneNumber] = useState('');  
 
     return (
         <KeyboardAvoidingView
@@ -22,18 +23,29 @@ export const FeedbackForm = () => {
                 <TextInput 
                     style={feedbackStyles.input} 
                     value={firstName} 
-                    onChangeText={onChangeFirstName} 
+                    onChangeText={onChangeFirstName}
+                    placeholder="First Name" 
                 /> 
                 <TextInput 
                     style={feedbackStyles.input} 
                     value={lastName} 
-                    onChangeText={onChangeLastName} 
+                    onChangeText={onChangeLastName}
+                    placeholder="Last Name" 
                 /> 
+                <TextInput 
+                    style={feedbackStyles.input} 
+                    value={phoneNumber} 
+                    onChangeText={onChangePhoneNumber} 
+                    keyboardType="phone-pad"
+                    placeholder="Phone Number"
+                />
                 <TextInput 
                     style={feedbackStyles.messageInput} 
                     value={message} 
                     onChangeText={onChangeMessage}
+                    placeholder={'Please leave feedback'} 
                     multiline={true} 
+                    maxLength={250} 
                 /> 
                 <Button
                     title="Submit"
