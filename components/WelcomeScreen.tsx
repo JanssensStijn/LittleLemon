@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text} from "react-native";
 
 export const WelcomeScreen = () => {
     const [firstName, onChangeFirstName] = useState('');
@@ -8,6 +8,12 @@ export const WelcomeScreen = () => {
             keyboardDismissMode="on-drag"
             indicatorStyle="white"
             style={welcomeStyles.container}>
+                <Image
+                    style={welcomeStyles.logo} 
+                    source={require("../assets/img/littleLemonLogo.png")}
+                    accessible={true}
+                    accessibilityLabel="Little Lemon Logo"
+                />
                 <Text
                     style={welcomeStyles.headerText}>
                     Welcome to Little Lemon
@@ -17,11 +23,33 @@ export const WelcomeScreen = () => {
                     Little Lemon is a charming neigherhood bistro that serves simple food  and classic cocktails
                     in a lively but casual environment. We would love to hear more about your experience with us!
                 </Text>
-                <TextInput
-                    style={welcomeStyles.input}
-                    placeholder="First Name"
-                    value={firstName}
-                    onChangeText={onChangeFirstName}
+                <Image
+                    resizeMode="cover"
+                    style={welcomeStyles.image}
+                    source={require("../assets/img/Picture1.png")}
+                    accessible={true}
+                    accessibilityLabel="Picture of a napkin on a table"
+                />
+                <Image
+                    resizeMode="cover"
+                    style={welcomeStyles.image}
+                    source={require("../assets/img/Picture2.png")}
+                    accessible={true}
+                    accessibilityLabel="Picture of a dish"
+                />
+                <Image
+                    resizeMode="cover"
+                    style={welcomeStyles.image}
+                    source={require("../assets/img/Picture3.png")}
+                    accessible={true}
+                    accessibilityLabel="Picture of a lemon being cut in half"
+                />
+                <Image
+                    resizeMode="cover"
+                    style={welcomeStyles.image}
+                    source={require("../assets/img/Picture4.png")}
+                    accessible={true}
+                    accessibilityLabel="Picture of mussels with a piece of lemon on the side"
                 />
 
         </ScrollView>
@@ -32,6 +60,20 @@ const welcomeStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'black',
+    },
+    logo: {
+        resizeMode: 'contain',
+        width: 300,
+        height: 100,
+        alignSelf: 'center',
+        marginTop: 40,
+    },
+    image: {
+        width: 350,
+        height: 250,
+        marginVertical: 10,
+        borderRadius: 20,
+        alignSelf: 'center',
     },
     headerText: {
         fontSize: 30,
