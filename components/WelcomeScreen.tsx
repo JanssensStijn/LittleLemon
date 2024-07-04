@@ -1,100 +1,58 @@
 import { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text} from "react-native";
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, View} from "react-native";
 
 export const WelcomeScreen = () => {
     const [firstName, onChangeFirstName] = useState('');
     return (
-        <ScrollView
-            keyboardDismissMode="on-drag"
-            indicatorStyle="white"
-            style={welcomeStyles.container}>
-                <Image
-                    style={welcomeStyles.logo} 
-                    source={require("../assets/img/littleLemonLogo.png")}
-                    accessible={true}
-                    accessibilityLabel="Little Lemon Logo"
-                />
-                <Text
-                    style={welcomeStyles.headerText}>
-                    Welcome to Little Lemon
-                </Text>
-                <Text
-                    style={welcomeStyles.welcomeText}>
-                    Little Lemon is a charming neigherhood bistro that serves simple food  and classic cocktails
-                    in a lively but casual environment. We would love to hear more about your experience with us!
-                </Text>
-                <Image
-                    resizeMode="cover"
-                    style={welcomeStyles.image}
-                    source={require("../assets/img/Picture1.png")}
-                    accessible={true}
-                    accessibilityLabel="Picture of a napkin on a table"
-                />
-                <Image
-                    resizeMode="cover"
-                    style={welcomeStyles.image}
-                    source={require("../assets/img/Picture2.png")}
-                    accessible={true}
-                    accessibilityLabel="Picture of a dish"
-                />
-                <Image
-                    resizeMode="cover"
-                    style={welcomeStyles.image}
-                    source={require("../assets/img/Picture3.png")}
-                    accessible={true}
-                    accessibilityLabel="Picture of a lemon being cut in half"
-                />
-                <Image
-                    resizeMode="cover"
-                    style={welcomeStyles.image}
-                    source={require("../assets/img/Picture4.png")}
-                    accessible={true}
-                    accessibilityLabel="Picture of mussels with a piece of lemon on the side"
-                />
-
-        </ScrollView>
+        <ScrollView style={welcomeStyles.container}>
+        <View style={welcomeStyles.headerWrapper}>
+          <Image
+            style={welcomeStyles.image}
+            source={require('../assets/img/littleLemonLogoSmall.png')}
+            resizeMode="cover"
+            accessible={true}
+            accessibilityLabel={'Little Lemon Logo'}
+          />
+  
+          <Text style={welcomeStyles.headerText}>Little Lemon</Text>
+        </View>
+        <Text style={welcomeStyles.regularText}>
+          Little Lemon is a charming neighborhood bistro that serves simple food
+          and classic cocktails in a lively but casual environment. We would love
+          to hear your experience with us!
+        </Text>
+      </ScrollView>
     );
 };
 
 const welcomeStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
-    },
-    logo: {
-        resizeMode: 'contain',
-        width: 300,
-        height: 100,
-        alignSelf: 'center',
-        marginTop: 40,
-    },
-    image: {
-        width: 350,
-        height: 250,
-        marginVertical: 10,
-        borderRadius: 20,
-        alignSelf: 'center',
-    },
-    headerText: {
+      },
+      headerWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin: 10,
+      },
+      headerText: {
+        paddingRight: 10,
+        paddingLeft: 20,
+        paddingTop: 30,
+        paddingBottom: 10,
         fontSize: 30,
-        padding: 40,
         color: '#EDEFEE',
-        textAlign: 'center'
-    },
-    welcomeText: {
-        fontSize: 25,
+        textAlign: 'center',
+      },
+      regularText: {
+        fontSize: 24,
         padding: 20,
         marginVertical: 8,
         color: '#EDEFEE',
-        textAlign: 'center'
-    },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        fontSize: 16,
-        borderColor: '#EDEFEE',
-        backgroundColor: '#EDEFEE',
-    }
+        textAlign: 'center',
+      },
+      image: {
+        width: 100,
+        height: 100,
+        borderRadius: 20,
+      },
 });
