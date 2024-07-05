@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, View,
-  useColorScheme
+  useColorScheme, useWindowDimensions
 } from "react-native";
 
 export const WelcomeScreen = () => {
-    var colorScheme = useColorScheme();
+    const { width, height, fontScale } = useWindowDimensions();
+    const colorScheme = useColorScheme();
 
     return (
       <ScrollView style={[welcomeStyles.container, 
@@ -19,7 +20,9 @@ export const WelcomeScreen = () => {
             accessibilityLabel={'Little Lemon Logo'}
           />
   
-          <Text style={welcomeStyles.headerText}>Little Lemon</Text>
+          <Text style={[welcomeStyles.headerText, 
+            colorScheme === 'light' ? {color:'black'}: {color:'#EDEFEE'}
+          ]}>Little Lemon</Text>
         </View>
         <Text style={welcomeStyles.regularText}>
           Little Lemon is a charming neighborhood bistro that serves simple food
@@ -27,6 +30,9 @@ export const WelcomeScreen = () => {
           to hear your experience with us!
         </Text>
         <Text style={welcomeStyles.regularText}>Color scheme: {colorScheme}</Text>
+        <Text style={welcomeStyles.regularText}>Width: {width}</Text>
+        <Text style={welcomeStyles.regularText}>Height: {height}</Text>
+        <Text style={welcomeStyles.regularText}>Fontscale: {fontScale}</Text>
       </ScrollView>
     );
 };
