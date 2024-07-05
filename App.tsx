@@ -17,9 +17,9 @@ export default function App() {
         {/*<FeedbackForm/>*/}
         {/*<LoginScreen />*/}
       </View>
-      {/*<View>
+      <View>
         <LittleLemonFooter />
-      </View>*/}
+      </View>
   </>
   );
 }

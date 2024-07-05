@@ -30,18 +30,16 @@ export const WelcomeScreen = () => {
           />
   
           <Text style={[welcomeStyles.headerText, 
-            colorScheme === 'light' ? {color:'black'}: {color:'#EDEFEE'}
+            colorScheme === 'light' ? {color:'#333333'}: {color:'#EDEFEE'}
           ]}>Little Lemon</Text>
         </View>
-        <Text style={welcomeStyles.regularText}>
+        <Text style={[welcomeStyles.regularText, 
+            colorScheme === 'light' ? {color:'#333333'}: {color:'#EDEFEE'}
+          ]}>
           Little Lemon is a charming neighborhood bistro that serves simple food
           and classic cocktails in a lively but casual environment. We would love
           to hear your experience with us!
         </Text>
-        <Text style={welcomeStyles.regularText}>Color scheme: {colorScheme}</Text>
-        <Text style={welcomeStyles.regularText}>Width: {width}</Text>
-        <Text style={welcomeStyles.regularText}>Height: {height}</Text>
-        <Text style={welcomeStyles.regularText}>Fontscale: {fontScale}</Text>
       </ScrollView>
     );
 };
@@ -61,14 +59,12 @@ const welcomeStyles = StyleSheet.create({
         paddingTop: 30,
         paddingBottom: 10,
         fontSize: 30,
-        color: '#EDEFEE',
         textAlign: 'center',
       },
       regularText: {
         fontSize: 24,
         padding: 20,
         marginVertical: 8,
-        color: '#EDEFEE',
         textAlign: 'center',
       },
       image: {
