@@ -1,39 +1,32 @@
-import {StyleSheet, View } from 'react-native';
-import  {LittleLemonHeader } from './components/LittleLemonHeader';
+import * as React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { LittleLemonHeader } from './components/LittleLemonHeader';
 import { LittleLemonFooter } from './components/LittleLemonFooter';
 import { WelcomeScreen } from './Screens/WelcomeScreen';
-import { MenuScreen } from './Screens/MenuScreen';
-import { FeedbackForm } from './components/FeedbackForm';
 import { LoginScreen } from './Screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MenuScreen } from './Screens/MenuScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-  const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
-      {/*<View
-        style={styles.container}>
-        <LittleLemonHeader />
-      </View>*/}
-      <Stack.Navigator 
-        initialRouteName="Welcome"
-        screenOptions={{headerStyle: {backgroundColor: '#FBDABB'} }}>
-        <Stack.Screen
-          name="Welcome" 
-          component={WelcomeScreen}
-          options={{title: 'Home'}}
-        />
-        <Stack.Screen 
-          name="Menu" 
-          component={MenuScreen}
-        />
-      </Stack.Navigator>
-      {/*<View>
-        <LittleLemonFooter />
-      </View>*/}
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <LittleLemonHeader />
+          <Stack.Navigator initialRouteName="Welcome">
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Menu" component={MenuScreen} />
+          </Stack.Navigator>
+        </View>
+        <View style={styles.footerContainer}>
+          <LittleLemonFooter />
+        </View>
+      </NavigationContainer>
+    </>
   );
 }
 
@@ -42,4 +35,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#333333',
   },
+  footerContainer: { backgroundColor: '#333333' },
 });
+

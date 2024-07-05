@@ -1,3 +1,4 @@
+import { NavigationProp } from "@react-navigation/native";
 import { useState } from "react";
 import { Pressable, SectionList,  StyleSheet, Text, View } from "react-native";
 
@@ -68,7 +69,7 @@ const Separator = () => <View style={menuStyles.Separator}/>;
 const Header = () => <Text style={menuStyles.headerText}>View Menu</Text>;
 const Footer = () => <Text style={menuStyles.footerText}>All rights reserved by Little Lemon, 2024</Text>;
 
-export const MenuScreen = () => {
+export const MenuScreen = ({navigation}: {navigation: NavigationProp<any>}) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const renderItem = ({item}: {item: ItemProps}) => <Item item={item}/>
@@ -99,6 +100,7 @@ export const MenuScreen = () => {
           ListFooterComponent={Footer}
           ItemSeparatorComponent={Separator}></SectionList>
       )}
+      <Pressable onPress={() => navigation.navigate('Welcome')}><Text>Go Back</Text></Pressable>
     </View>
   );
 };

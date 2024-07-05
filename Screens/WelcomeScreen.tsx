@@ -1,10 +1,12 @@
 import { useAppState, useDeviceOrientation } from "@react-native-community/hooks";
 import { useState } from "react";
-import { Image, ImageBackground, ScrollView, StyleSheet, Text, View,
+import { Image, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View,
   useColorScheme, useWindowDimensions
 } from "react-native";
+import { NavigationProp } from '@react-navigation/native';
 
-export const WelcomeScreen = () => {
+
+export const WelcomeScreen = ({navigation}: {navigation: NavigationProp<any>}) => {
     const { width, height, fontScale } = useWindowDimensions();
     const colorScheme = useColorScheme();
 
@@ -40,6 +42,9 @@ export const WelcomeScreen = () => {
           and classic cocktails in a lively but casual environment. We would love
           to hear your experience with us!
         </Text>
+        <Pressable onPress={() => navigation.navigate('Menu')}> 
+          <Text style={welcomeStyles.buttonText}>View Menu</Text> 
+        </Pressable> 
       </ScrollView>
     );
 };
@@ -71,5 +76,14 @@ const welcomeStyles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 20,
+      },
+      buttonText: {
+        fontSize: 24,
+        textAlign: 'center',
+        backgroundColor: '#FFD700',
+        color: '#333333',
+        padding: 10,
+        margin: 10,
+        borderRadius: 10,
       },
 });
