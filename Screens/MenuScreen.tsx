@@ -68,7 +68,7 @@ const Separator = () => <View style={menuStyles.Separator}/>;
 const Header = () => <Text style={menuStyles.headerText}>View Menu</Text>;
 const Footer = () => <Text style={menuStyles.footerText}>All rights reserved by Little Lemon, 2024</Text>;
 
-export const MenuItems = () => {
+export const MenuScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const renderItem = ({item}: {item: ItemProps}) => <Item item={item}/>
