@@ -10,12 +10,7 @@ export const WelcomeScreen = ({navigation}: {navigation: NavigationProp<any>}) =
     const { width, height, fontScale } = useWindowDimensions();
     const colorScheme = useColorScheme();
 
-    const orientation = useDeviceOrientation()
-    const appState = useAppState()
-
- 
-    console.log(' orientation is: ', orientation)
-    console.log(' appState is: ', appState)
+    
 
 
     return (
