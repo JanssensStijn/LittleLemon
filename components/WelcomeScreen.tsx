@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { Image, ImageBackground, ScrollView, StyleSheet, Text, View} from "react-native";
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, View,
+  useColorScheme
+} from "react-native";
 
 export const WelcomeScreen = () => {
-    const [firstName, onChangeFirstName] = useState('');
+    var colorScheme = useColorScheme();
+
     return (
-        <ScrollView style={welcomeStyles.container}>
+      <ScrollView style={[welcomeStyles.container, 
+        colorScheme === 'light' ? {backgroundColor:'#fff'}: {backgroundColor:'#333333'}
+        ]}>
         <View style={welcomeStyles.headerWrapper}>
           <Image
             style={welcomeStyles.image}
@@ -21,6 +26,7 @@ export const WelcomeScreen = () => {
           and classic cocktails in a lively but casual environment. We would love
           to hear your experience with us!
         </Text>
+        <Text style={welcomeStyles.regularText}>Color scheme: {colorScheme}</Text>
       </ScrollView>
     );
 };
