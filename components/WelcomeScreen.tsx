@@ -1,3 +1,4 @@
+import { useAppState, useDeviceOrientation } from "@react-native-community/hooks";
 import { useState } from "react";
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, View,
   useColorScheme, useWindowDimensions
@@ -6,6 +7,14 @@ import { Image, ImageBackground, ScrollView, StyleSheet, Text, View,
 export const WelcomeScreen = () => {
     const { width, height, fontScale } = useWindowDimensions();
     const colorScheme = useColorScheme();
+
+    const orientation = useDeviceOrientation()
+    const appState = useAppState()
+
+ 
+    console.log(' orientation is: ', orientation)
+    console.log(' appState is: ', appState)
+
 
     return (
       <ScrollView style={[welcomeStyles.container, 
