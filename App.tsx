@@ -1,16 +1,12 @@
-import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { LittleLemonHeader } from './components/LittleLemonHeader';
 import { LittleLemonFooter } from './components/LittleLemonFooter';
 import { WelcomeScreen } from './Screens/WelcomeScreen';
 import { LoginScreen } from './Screens/LoginScreen';
-import { NavigationContainer } from '@react-navigation/native';
-import { MenuScreen } from './Screens/MenuScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator();
-    
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
@@ -18,35 +14,10 @@ export default function App() {
       <NavigationContainer>
         <View style={styles.container}>
           <LittleLemonHeader />
-          <Tab.Navigator 
-            initialRouteName="Login"
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-
-                if (route.name === 'Welcome') {
-                  iconName = focused
-                    ? 'home'
-                    : 'home-outline';
-                } else if (route.name === 'Menu') {
-                  iconName =  focused
-                  ? 'list'
-                  : 'list-outline';
-                } else if (route.name === 'Login') {
-                  iconName =  focused
-                  ? 'person-circle'
-                  : 'person-circle-outline';
-                }
-                return <Ionicons name={iconName as any} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
-            }
-          )}>
-            <Tab.Screen name="Welcome" component={WelcomeScreen} options={{title:'Home', headerTitleAlign: 'center'}}/>
-            <Tab.Screen name="Login" component={LoginScreen} options={{ headerTitleAlign: 'center' }}/>
-            <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitleAlign: 'center' }}/>
-          </Tab.Navigator>
+          <Drawer.Navigator initialRouteName="Login">
+            <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+            <Drawer.Screen name="Login" component={LoginScreen} />
+          </Drawer.Navigator>
         </View>
         <View style={styles.footerContainer}>
           <LittleLemonFooter />
@@ -63,4 +34,3 @@ const styles = StyleSheet.create({
   },
   footerContainer: { backgroundColor: '#333333' },
 });
-
