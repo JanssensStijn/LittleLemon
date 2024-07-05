@@ -5,6 +5,7 @@ import { LittleLemonHeader } from './components/LittleLemonHeader';
 import { LittleLemonFooter } from './components/LittleLemonFooter';
 import { WelcomeScreen } from './Screens/WelcomeScreen';
 import { LoginScreen } from './Screens/LoginScreen';
+import { MenuScreen } from './Screens/MenuScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
           <Drawer.Navigator initialRouteName="Login">
             <Drawer.Screen name="Welcome" component={WelcomeScreen} />
             <Drawer.Screen name="Login" component={LoginScreen} />
+            <Drawer.Screen name="Menu" component={MenuScreen} />
           </Drawer.Navigator>
         </View>
         <View style={styles.footerContainer}>
